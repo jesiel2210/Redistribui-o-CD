@@ -239,6 +239,7 @@ LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRT
 
 
 Resultado esperado, quatro lojas deverá ter um romaneio de transferência, com 48 unidades em cada de acordo com a Prioridade de abastecimento da unidade (loja), e uma loja ira receber 02 itens de acordo com a prioridade.
+
 romaneio_item_dbf
 LOJA | QUANTIDADE
 ---: | ---:
@@ -256,6 +257,48 @@ LOJA | QUANTIDADE
 12| 48
 13| 0
 
+
+
+### Teste 06 - Item sem encomendas, com o multiplo de 1 item, entrando 2000 unidades, para doze lojas com necessidade QUANTIDADE MININA  de 48 item em cada loja e com QUANTIDADE MAXIMA de 96 em quatro lojas.
+
+
+produto_estoque
+LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
+---: | ---: | ---: | ---: | ---: | ---:| ---:
+1 | 0 | 0 | 0 | 0 | 0
+2 | 48|0 | 0 | 0 | 0
+3 | 48|0 | 0 | 0 | 0
+4 | 48|0 | 0 | 0 | 0
+5 | 48| 96| 0 | 0 | 0
+6 | 48| 96 | 0 | 0 | 0
+7 | 48| 0 | 0 | 0 | 0
+8 | 48| 0 | 0 | 0 | 0
+9 | 48| 96 | 0 | 0 | 0
+10| 48| 0 | 0 | 0 | 0
+11| 48| 0 | 0 | 0 | 0
+12| 48| 96| 0 | 0 | 0
+13| 48| 0 | 0 | 0 |0
+
+
+
+Resultado esperado, quatro lojas deverá ter um romaneio de transferência, com 48 unidades em cada de acordo com a Prioridade de abastecimento da unidade (loja), e uma loja ira receber 02 itens de acordo com a prioridade.
+
+romaneio_item_dbf
+LOJA | QUANTIDADE
+---: | ---:
+1 | 0
+2 | 0
+3 | 48
+4 | 0
+5 | 48
+6 | 48
+7 | 0
+8 | 1
+9 | 2
+10| 0
+11| 0
+12| 48
+13| 0
 
 Calulando o atendimento mínimo/crítico sobram 3 unidades excedentes.
 
