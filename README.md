@@ -136,7 +136,7 @@ LOJA | QUANTIDADE
 
 ### Teste 03 - Item sem encomendas, com o multiplo de 1 item, entrando 1200 unidades, para três lojas com necessidade QUANTIDADE MININA  de 48 item em cada loja.
 
-Entradas
+
 produto_estoque
 LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
 ---: | ---: | ---: | ---: | ---: | ---:| ---:
@@ -176,7 +176,7 @@ LOJA | QUANTIDADE
 
 ### Teste 04 - Item sem encomendas, com o multiplo de 1 item, entrando 1200 unidades, para doze lojas com necessidade QUANTIDADE MININA  de 48 item em cada loja e com QUANTIDADE MAXIMA de 96 em doze lojas.
 
-Entradas
+
 produto_estoque
 LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
 ---: | ---: | ---: | ---: | ---: | ---:| ---:
@@ -216,44 +216,45 @@ LOJA | QUANTIDADE
 
 
 
-### Teste 05 - Item sem encomendas, com o multiplo de 1 item, entrando 1200 unidades, para doze lojas com necessidade QUANTIDADE MININA  de 48 item em cada loja e com QUANTIDADE MAXIMA de 96 em doze lojas.
+### Teste 05 - Item sem encomendas, com o multiplo de 1 item, entrando 200 unidades, para doze lojas com necessidade QUANTIDADE MININA  de 48 item em cada loja e com QUANTIDADE MAXIMA de 96 em quatro lojas.
 
-Entradas
+
 produto_estoque
 LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
 ---: | ---: | ---: | ---: | ---: | ---:| ---:
 1 | 0 | 0 | 0 | 0 | 0
-2 | 48| 96 | 0 | 0 | 0
-3 | 48| 96 | 0 | 0 | 0
-4 | 48| 96| 0 | 0 | 0
+2 | 48|0 | 0 | 0 | 0
+3 | 48|0 | 0 | 0 | 0
+4 | 48|0 | 0 | 0 | 0
 5 | 48| 96| 0 | 0 | 0
 6 | 48| 96 | 0 | 0 | 0
-7 | 48| 96 | 0 | 0 | 0
-8 | 48| 96 | 0 | 0 | 0
+7 | 48| 0 | 0 | 0 | 0
+8 | 48| 0 | 0 | 0 | 0
 9 | 48| 96 | 0 | 0 | 0
-10| 48| 96 | 0 | 0 | 0
-11| 48| 96 | 0 | 0 | 0
+10| 48| 0 | 0 | 0 | 0
+11| 48| 0 | 0 | 0 | 0
 12| 48| 96| 0 | 0 | 0
-13| 48| 96 | 0 | 0 |0
+13| 48| 0 | 0 | 0 |0
 
-Resultado esperado, cada loja deverá ter um romaneio de transferência, com 96 unidades cada e o excedente 48 irá para o CD.
 
+
+Resultado esperado, quatro lojas deverá ter um romaneio de transferência, com 48 unidades em cada de acordo com a Prioridade de abastecimento da unidade (loja), e uma loja ira receber 02 itens de acordo com a prioridade.
 romaneio_item_dbf
 LOJA | QUANTIDADE
 ---: | ---:
-1 | 48
-2 | 96
-3 | 96
-4 | 96
-5 | 96
-6 | 96
-7 | 96
-8 | 96
-9 | 96
-10| 96
-11| 96
-12| 96
-13| 96
+1 | 0
+2 | 0
+3 | 48
+4 | 0
+5 | 48
+6 | 48
+7 | 0
+8 | 1
+9 | 2
+10| 0
+11| 0
+12| 48
+13| 0
 
 
 Calulando o atendimento mínimo/crítico sobram 3 unidades excedentes.
