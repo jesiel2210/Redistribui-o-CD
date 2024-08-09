@@ -1,5 +1,5 @@
 
-# Nova Calculo de Redistribuição
+# Nova Calculo de Redistribuição + Ponto de Pedido
 
 ## O que é?
 O ato de dividir as mercadorias adquiridas entre as unidades de maneira prever a demanda e minimizar as transferências entre as unidades.
@@ -734,7 +734,7 @@ Loja 10- empenhado_encomenda 10/10/2022 as 10:30- recebe na proxima entrada como
 
 Saidas
 romaneio_item_dbf
-LOJA | PRIORIDADE_ABASTECIMENTO
+LOJA | Quantidade
 ---: | ---:
 1 | 0
 2 | 1
@@ -750,8 +750,117 @@ LOJA | PRIORIDADE_ABASTECIMENTO
 12 | 0
 13 | 0
 
+### ### Teste 13 -  Item sem encomendas, com múltiplos de 2 itens, entrando 40 unidades, para doze lojas com quantidades minima diferente em cada loja
+
+Entrada
+produto_estoque
+LOJA | QUANTIDADE_MINIMA | QUANTIDADE_CRITICO | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
+---: | ---: | ---: | ---: | ---: | ---:
+1|	0|	0 | 0 | 0 | 0
+2|10| 0 | 0 | 0 | 0
+3|15| 0 | 0 | 0 | 0
+4|8|	 0 | 0 | 0 | 0
+5|12|	0 | 0 | 0 | 0
+6|20|	0 | 0 | 0 | 0
+7|14|0 | 0 | 0 | 0
+8|11|0 | 0 | 0 | 0
+9|16|	0 | 0 | 0 | 0
+10|9|	0 | 0 | 0 | 0
+11|13|	0 | 0 | 0 | 0
+12|18|	0 | 0 | 0 | 0
+13|21|	0 | 0 | 0 | 0
+
+
+Lojas
+LOJA | PRIORIDADE_ABASTECIMENTO
+---: | ---:
+1 | 100
+2 | 11
+3 | 3
+4 | 200
+5 | 2
+6 | 4
+7 | 8
+8 | 7
+9 | 5
+10 | 9
+11 | 10
+12 | 1
+13 | 6
+
+Calculando o atendimento mínimo/crítico.
+
+Divide-se as unidades pelo EMBALAGEM_QUANTIDADE_EMPRESA, considerando neste caso o valor 2.
+Distribuindo = compra_item.QUANTIDADE_ESTOQUE.
+
+Ordem de abastecimento das unidades pela prioridade   = [12, 5, 6, ]
+Ordenar as lojas por prioridade
+Enquanto Distribuindo>0
+Diminui a quantidade distribuindo.
+ 
+Resultado esperado, loja 12 deverá ter um romaneio de transferência  com 18 unidades,loja 5 irá receber um romaneio com 12 unidades, loja 3 recebera um romaneio com 16 unidades e loja 06 um romaneio com 04 unidades 
 
 
 
+
+# Ponto de Pedido
+## O que é?
+O ponto de pedido é o nível de estoque em que um novo pedido deve ser feito para evitar a ruptura de estoque. É calculado com base na demanda diária média, no tempo de reposição (lead time) e no estoque de segurança. Ele garante que você tenha produtos suficientes para atender à demanda sem excessos.
+
+Itens Curva A,B por X 
+
+| Código  | Descrição | Giro  | Giro Curva | Venda Diária (uni) | Venda por Semana (uni) | Venda Mensal | Lead Time |
+|---------|-----------|-------|------------|--------------------|------------------------|--------------|-----------|
+| 17766   | OLEO MOTOR 1 LITRO SAE 15W40 API SL SEMI SINTETICO | 13952 | A | 89 | 537 | 2146 | 4 |
+| 17655   | OLEO MOTOR 1 LITRO SL SAE 20W50 MINERAL RADNAQ | 12826 | A | 82 | 493 | 1973 | 4 |
+| 10376   | FILTRO OLEO MONZA/KADETT 82/ OMEGA/VECTRA/CORSA/MONTANA/ASTRA/S10/ZAFIRA 1.8/2.0/2.2/2.4 CORSA/CELTA/MONTANA 1.0/1.4/1.6 8V 95/ - SPIN/COBALT 1.4/1.8 8V 2012/ AGILE 09/ PALIO/WEEKEND/SIENA/STRADA/DOBLO/IDEA/PUNTO 1.8 03/ - NOVA S 10 2.4 2012/ - ONIX/PRISMA 1.0/1.4 8V 2012/ | 1885 | B | 12 | 73 | 290 | 15 |
+| 29057   | VELA GOL/PARATI 1.0 8V 05/ - FOX/POLO 1.0 8V 05/  TOTAL FLEX E GNV - FOX/GOL/VOYAGE/SAVEIRO FLEX 1.0/1.6 8V 08/ - KOMBI 1.4 FLEX 09/ 1 ELETRODO | 3468 | B | 22 | 133 | 534 | 3 |
+| 29253   | VELA RESISTIVA CELTA/CORSA 1.0 8V 05/ FLEXPOWER ONIX/PRISMA 1.0 8V 2013/ | 1762 | B | 11 | 68 | 271 | 3 |
+| 27650   | VELA RESISTIVA GREEN GASOL/ALC. FIAT/PEUGEOT/RENAULT/CITROEN 1 ELETRODO | 2989 | B | 19 | 115 | 460 | 3 |
+| 23980   | ADITIVO AGUA RADIADOR ORGANICO ROSA 1L BIO SOLUCAO ORGANICO LONG LIFE DILUIDO (2 ANOS SISTEMA) | 1619 | B | 10 | 62 | 249 | 4 |
+| 23950   | ADITIVO AGUA RADIADOR ORGANICO ROSA 1L BIOFLUIDO LONG LIFE PARAFLU (SEMI SINTETICO 2 ANOS SISTEMA) | 4995 | B | 32 | 192 | 768 | 4 |
+| 969     | FLUIDO FREIO 500ML DOT 3 | 1852 | B | 12 | 71 | 285 | 4 |
+| 4969    | FLUIDO FREIO 500ML DOT 4 - E FLUIDO P/ SISTEMAS EMBREAGEM | 2465 | B | 16 | 95 | 379 | 4 |
+| 13816   | OLEO HIDRAULICO 1 LITRO ATF SUFIXO A | 2364 | B | 15 | 91 | 364 | 4 |
+| 17760   | OLEO MOTOR 1 LITRO SAE 10W40 API SN SEMI SINTETICO | 1757 | B | 11 | 68 | 270 | 4 |
+| 29398   | OLEO MOTOR 1 LITRO SN SAE 5W30 SINTETICO GM S10 8V/COBALT 8V /ONIX 8V/SPIN 8V GASOLINA/FLEX/GNV 2012/ - FORD ECOSPORT/FIESTA/KA 1.0/1.6 ROCAM E SIGMA  (DEXOS 1 GM6094M / ILSAC GF 5 / FORD WSSM2C946B1 / CHRYSLER MS6395) | 6577 | B | 42 | 253 | 1012 | 4 |
+| 107198  | OLEO MOTOR 1 LITRO SP SAE 5W30 SINTETICO GM S10/COBALT/ONIX/SPIN GASOLINA/FLEX/GNV 2012/ - FORD ECOSPORT/FIESTA/KA 1.0/1.6 ROCAM E SIGMA  (ILSAC GF 6 / FORD WSSM2C946B1 / CHRYSLER MS6395 ) | 1661 | B | 11 | 64 | 256 | 4 |
+| 24800   | OLEO MOTOR 1LT. SINTETICO 5W40 API-SN (MB-APPROVAL 229.3 PORSCHE A40, RENAULT RN0700/RN0710, VW (GASOLINA/DIESEL), 502.00/505.00, PSA (PEUGEOT/CITROEN). | 3078 | B | 20 | 118 | 474 | 4 |
+| 13822   | OLEO TRANSMISSAO 1 LITRO SAE 90 CAMBIO/DIFER API GL5 | 2169 | B | 14 | 83 | 334 | 4 |
+| 25303   | AGUA DESMINERALIZADA E DEIONIZADA 1 LITRO PARA BATERIAS E SISTEMAS DE RADIADOR) | 1763 | B | 11 | 68 | 271 | 15 |
+| 99904   | AGUA DESMINERALIZADA E DEIONIZADA 5 LITROS PARA BATERIAS E SISTEMAS DE RADIADOR) | 3566 | B | 23 | 137 | 549 | 15 |
+| 5852    | ANTI-CORROSIVO SPRAY 300ML STARRETT LUB | 1647 | B | 11 | 63 | 253 | 10 |
+| 20558   | SILICONE 85GR PRETO ULTRA BLACK SI598 (OXIMICO) | 2596 | B | 17 | 100 | 399 | 3 |
+| 9700    | FAIXA REFLETIVA PARA CAMINHOES DIREITO | 4778 | B | 31 | 184 | 735 | 10 |
+
+
+
+Calculo de Ponto de Pedido
+
+
+
+| Código  | Descrição | Demanda Diária Média | Lead Time | Ponto de Pedido |
+|---------|-----------|-----------------------|-----------|-----------------|
+| 17766   | OLEO MOTOR 1 LITRO SAE 15W40 API SL SEMI SINTETICO | 89  | 4 | 356 |
+| 17655   | OLEO MOTOR 1 LITRO SL SAE 20W50 MINERAL RADNAQ | 82  | 4 | 328 |
+| 10376   | FILTRO OLEO MONZA/KADETT 82/ OMEGA/VECTRA/CORSA/MONTANA/ASTRA/S10/ZAFIRA 1.8/2.0/2.2/2.4 CORSA/CELTA/MONTANA 1.0/1.4/1.6 8V 95/ - SPIN/COBALT 1.4/1.8 8V 2012/ AGILE 09/ PALIO/WEEKEND/SIENA/STRADA/DOBLO/IDEA/PUNTO 1.8 03/ - NOVA S 10 2.4 2012/ - ONIX/PRISMA 1.0/1.4 8V 2012/ | 12  | 15 | 180 |
+| 29057   | VELA GOL/PARATI 1.0 8V 05/ - FOX/POLO 1.0 8V 05/  TOTAL FLEX E GNV - FOX/GOL/VOYAGE/SAVEIRO FLEX 1.0/1.6 8V 08/ - KOMBI 1.4 FLEX 09/ 1 ELETRODO | 22  | 3 | 66 |
+| 29253   | VELA RESISTIVA CELTA/CORSA 1.0 8V 05/ FLEXPOWER ONIX/PRISMA 1.0 8V 2013/ | 11  | 3 | 33 |
+| 27650   | VELA RESISTIVA GREEN GASOL/ALC. FIAT/PEUGEOT/RENAULT/CITROEN 1 ELETRODO | 19  | 3 | 57 |
+| 23980   | ADITIVO AGUA RADIADOR ORGANICO ROSA 1L BIO SOLUCAO ORGANICO LONG LIFE DILUIDO (2 ANOS SISTEMA) | 10  | 4 | 40 |
+| 23950   | ADITIVO AGUA RADIADOR ORGANICO ROSA 1L BIOFLUIDO LONG LIFE PARAFLU (SEMI SINTETICO 2 ANOS SISTEMA) | 32  | 4 | 128 |
+| 969     | FLUIDO FREIO 500ML DOT 3 | 12  | 4 | 48 |
+| 4969    | FLUIDO FREIO 500ML DOT 4 - E FLUIDO P/ SISTEMAS EMBREAGEM | 16  | 4 | 64 |
+| 13816   | OLEO HIDRAULICO 1 LITRO ATF SUFIXO A | 15  | 4 | 60 |
+| 17760   | OLEO MOTOR 1 LITRO SAE 10W40 API SN SEMI SINTETICO | 11  | 4 | 44 |
+| 29398   | OLEO MOTOR 1 LITRO SN SAE 5W30 SINTETICO GM S10 8V/COBALT 8V /ONIX 8V/SPIN 8V GASOLINA/FLEX/GNV 2012/ - FORD ECOSPORT/FIESTA/KA 1.0/1.6 ROCAM E SIGMA  (DEXOS 1 GM6094M / ILSAC GF 5 / FORD WSSM2C946B1 / CHRYSLER MS6395) | 42  | 4 | 168 |
+| 107198  | OLEO MOTOR 1 LITRO SP SAE 5W30 SINTETICO GM S10/COBALT/ONIX/SPIN GASOLINA/FLEX/GNV 2012/ - FORD ECOSPORT/FIESTA/KA 1.0/1.6 ROCAM E SIGMA  (ILSAC GF 6 / FORD WSSM2C946B1 / CHRYSLER MS6395 ) | 11  | 4 | 44 |
+| 24800   | OLEO MOTOR 1LT. SINTETICO 5W40 API-SN (MB-APPROVAL 229.3 PORSCHE A40, RENAULT RN0700/RN0710, VW (GASOLINA/DIESEL), 502.00/505.00, PSA (PEUGEOT/CITROEN). | 20  | 4 | 80 |
+| 13822   | OLEO TRANSMISSAO 1 LITRO SAE 90 CAMBIO/DIFER API GL5 | 14  | 4 | 56 |
+| 25303   | AGUA DESMINERALIZADA E DEIONIZADA 1 LITRO PARA BATERIAS E SISTEMAS DE RADIADOR) | 11  | 15 | 165 |
+| 99904   | AGUA DESMINERALIZADA E DEIONIZADA 5 LITROS PARA BATERIAS E SISTEMAS DE RADIADOR) | 23  | 15 | 345 |
+| 5852    | ANTI-CORROSIVO SPRAY 300ML STARRETT LUB | 11  | 10 | 110 |
+| 20558   | SILICONE 85GR PRETO ULTRA BLACK SI598 (OXIMICO) | 17  | 3 | 51 |
+| 9700    | FAIXA REFLETIVA PARA CAMINHOES DIREITO | 31  | 10 | 310 |
 
 
