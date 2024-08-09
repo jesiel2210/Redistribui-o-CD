@@ -1,5 +1,5 @@
 
-# Nova Redistribuição
+# Nova Calculo de Redistribuição
 
 ## O que é?
 O ato de dividir as mercadorias adquiridas entre as unidades de maneira prever a demanda e minimizar as transferências entre as unidades.
