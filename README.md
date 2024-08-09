@@ -273,8 +273,6 @@ LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRT
 
 
 
-Resultado esperado, quatro lojas deverá ter um romaneio de transferência, com 48 unidades em cada de acordo com a Prioridade de abastecimento da unidade (loja), e uma loja ira receber 02 itens de acordo com a prioridade_abastecimento
-
 Lojas
 LOJA | PRIORIDADE_ABASTECIMENTO
 ---: | ---:
@@ -712,12 +710,17 @@ Loja
 Calulando o atendimento mínimo/crítico.
 
 Divide-se as unidades pelo EMBALAGEM_QUANTIDADE_EMPRESA, considerando neste caso o valor 1.
+
 Distribuindo = compra_item.QUANTIDADE_ESTOQUE.
 
 Ordenar as lojas por prioridade
+
 Enquanto Distribuindo>0
+
 A lojas que tem empenhado_encomenda tem a primeira prioridade,  seguindo para a proxima loja da vez seguindo o criterio de prioridade, e a data e hora do empenhado_encomenda.
- diminui a quantidade distribuindo.
+
+Diminui a quantidade distribuindo.
+
 
 Loja 2- empenhado_encomenda 10/10/2022 as 9:00- recebe 01
 
