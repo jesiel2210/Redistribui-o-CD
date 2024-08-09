@@ -410,8 +410,8 @@ LOJA | QUANTIDADE
 
 Entrada
 produto_estoque
-LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
----: | ---: | ---: | ---: | ---: | ---:| ---:
+LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | EMPENHADO_ENCOMENDA | GIRO
+---: | ---: | ---: | ---: | ---: |  ---:
 1 | 0 | 0 | 0 | 0 | 0
 2 | 16|0 | 0 | 0 | 0
 3 | 16|0 | 0 | 0 | 0
@@ -419,7 +419,7 @@ LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRT
 5 | 16| 0| 0 | 0 | 0
 6 | 16| 0 | 0 | 0 | 0
 7 | 16| 0 | 0 | 0 | 0
-8 | 16| 0 | 0 | 0 | 1
+8 | 16| 0 | 0 | 1 | 0
 9 | 16| 0 | 0 | 0 | 0
 10| 16| 0 | 0 | 0 | 0
 11| 16| 0 | 0 | 0 | 0
@@ -671,18 +671,18 @@ LOJA | QUANTIDADE
 ### ### Teste 12 - Item com quatro encomendas, com o multiplo de 1 item, entrando 3 unidades, para doze lojas com necessidade de 1 item em cada loja.
 Entrada
 produto_estoque
-LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
----: | ---: | ---: | ---: | ---: | ---:| ---:
+LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA |EMPENHADO_ENCOMENDA | GIRO
+---: | ---: | ---: | ---: | ---:| ---:
 1 | 0 | 0 | 0 | 0 | 0 | 0
-2 | 1 | 0 | 0 | 0 | 1 | 0
-3 | 1 | 0 | 0 | 0 | 1 | 0
+2 | 1 | 0 | 0 | 1 | 0 | 0
+3 | 1 | 0 | 0 | 1 | 0 | 0
 4 | 1 | 0 | 0 | 0 | 0 | 0
-5 | 1 | 0 | 0 | 0 | 1 | 0
+5 | 1 | 0 | 0 | 1 | 0 | 0
 6 | 1 | 0 | 0 | 0 | 0 | 0
 7 | 1 | 0 | 0 | 0 | 0 | 0
 8 | 1 | 0 | 0 | 0 | 0 | 0
 9 | 1 | 0 | 0 | 0 | 0 | 0
-10| 1 | 0 | 0 | 0 | 1 | 0
+10| 1 | 0 | 0 | 1 | 0 | 0
 11| 1 | 0 | 0 | 0 | 0 | 0
 12| 1 | 0| 0 | 0  | 0 | 0
 13| 1| 0 | 0 | 0  | 0 | 0
@@ -807,7 +807,7 @@ Resultado esperado, loja 12 deverá ter um romaneio de transferência  com 18 un
 ## O que é?
 O ponto de pedido é o nível de estoque em que um novo pedido deve ser feito para evitar a ruptura de estoque. É calculado com base na demanda diária média, no tempo de reposição (lead time) e no estoque de segurança. Ele garante que você tenha produtos suficientes para atender à demanda sem excessos.
 
-Itens Curva A,B por X 
+### Itens Curva A,B por X 
 
 | Código  | Descrição | Giro  | Giro Curva | Venda Diária (uni) | Venda por Semana (uni) | Venda Mensal | Lead Time |
 |---------|-----------|-------|------------|--------------------|------------------------|--------------|-----------|
@@ -835,32 +835,32 @@ Itens Curva A,B por X
 
 
 
-Calculo de Ponto de Pedido
+### Calculo de Ponto de Pedido
 
+(Demanda diária média x Lead Time) + Estoque de segurança. 
 
+O Estoque de segurança é um valor de teste , eu não somei os minimos  do sistema 
 
-| Código  | Descrição | Demanda Diária Média | Lead Time | Ponto de Pedido |
-|---------|-----------|-----------------------|-----------|-----------------|
-| 17766   | OLEO MOTOR 1 LITRO SAE 15W40 API SL SEMI SINTETICO | 89  | 4 | 356 |
-| 17655   | OLEO MOTOR 1 LITRO SL SAE 20W50 MINERAL RADNAQ | 82  | 4 | 328 |
-| 10376   | FILTRO OLEO MONZA/KADETT 82/ OMEGA/VECTRA/CORSA/MONTANA/ASTRA/S10/ZAFIRA 1.8/2.0/2.2/2.4 CORSA/CELTA/MONTANA 1.0/1.4/1.6 8V 95/ - SPIN/COBALT 1.4/1.8 8V 2012/ AGILE 09/ PALIO/WEEKEND/SIENA/STRADA/DOBLO/IDEA/PUNTO 1.8 03/ - NOVA S 10 2.4 2012/ - ONIX/PRISMA 1.0/1.4 8V 2012/ | 12  | 15 | 180 |
-| 29057   | VELA GOL/PARATI 1.0 8V 05/ - FOX/POLO 1.0 8V 05/  TOTAL FLEX E GNV - FOX/GOL/VOYAGE/SAVEIRO FLEX 1.0/1.6 8V 08/ - KOMBI 1.4 FLEX 09/ 1 ELETRODO | 22  | 3 | 66 |
-| 29253   | VELA RESISTIVA CELTA/CORSA 1.0 8V 05/ FLEXPOWER ONIX/PRISMA 1.0 8V 2013/ | 11  | 3 | 33 |
-| 27650   | VELA RESISTIVA GREEN GASOL/ALC. FIAT/PEUGEOT/RENAULT/CITROEN 1 ELETRODO | 19  | 3 | 57 |
-| 23980   | ADITIVO AGUA RADIADOR ORGANICO ROSA 1L BIO SOLUCAO ORGANICO LONG LIFE DILUIDO (2 ANOS SISTEMA) | 10  | 4 | 40 |
-| 23950   | ADITIVO AGUA RADIADOR ORGANICO ROSA 1L BIOFLUIDO LONG LIFE PARAFLU (SEMI SINTETICO 2 ANOS SISTEMA) | 32  | 4 | 128 |
-| 969     | FLUIDO FREIO 500ML DOT 3 | 12  | 4 | 48 |
-| 4969    | FLUIDO FREIO 500ML DOT 4 - E FLUIDO P/ SISTEMAS EMBREAGEM | 16  | 4 | 64 |
-| 13816   | OLEO HIDRAULICO 1 LITRO ATF SUFIXO A | 15  | 4 | 60 |
-| 17760   | OLEO MOTOR 1 LITRO SAE 10W40 API SN SEMI SINTETICO | 11  | 4 | 44 |
-| 29398   | OLEO MOTOR 1 LITRO SN SAE 5W30 SINTETICO GM S10 8V/COBALT 8V /ONIX 8V/SPIN 8V GASOLINA/FLEX/GNV 2012/ - FORD ECOSPORT/FIESTA/KA 1.0/1.6 ROCAM E SIGMA  (DEXOS 1 GM6094M / ILSAC GF 5 / FORD WSSM2C946B1 / CHRYSLER MS6395) | 42  | 4 | 168 |
-| 107198  | OLEO MOTOR 1 LITRO SP SAE 5W30 SINTETICO GM S10/COBALT/ONIX/SPIN GASOLINA/FLEX/GNV 2012/ - FORD ECOSPORT/FIESTA/KA 1.0/1.6 ROCAM E SIGMA  (ILSAC GF 6 / FORD WSSM2C946B1 / CHRYSLER MS6395 ) | 11  | 4 | 44 |
-| 24800   | OLEO MOTOR 1LT. SINTETICO 5W40 API-SN (MB-APPROVAL 229.3 PORSCHE A40, RENAULT RN0700/RN0710, VW (GASOLINA/DIESEL), 502.00/505.00, PSA (PEUGEOT/CITROEN). | 20  | 4 | 80 |
-| 13822   | OLEO TRANSMISSAO 1 LITRO SAE 90 CAMBIO/DIFER API GL5 | 14  | 4 | 56 |
-| 25303   | AGUA DESMINERALIZADA E DEIONIZADA 1 LITRO PARA BATERIAS E SISTEMAS DE RADIADOR) | 11  | 15 | 165 |
-| 99904   | AGUA DESMINERALIZADA E DEIONIZADA 5 LITROS PARA BATERIAS E SISTEMAS DE RADIADOR) | 23  | 15 | 345 |
-| 5852    | ANTI-CORROSIVO SPRAY 300ML STARRETT LUB | 11  | 10 | 110 |
-| 20558   | SILICONE 85GR PRETO ULTRA BLACK SI598 (OXIMICO) | 17  | 3 | 51 |
-| 9700    | FAIXA REFLETIVA PARA CAMINHOES DIREITO | 31  | 10 | 310 |
-
-
+| Código  | Demanda Diária Média | Lead Time | Estoque de Segurança | Ponto de Pedido |
+|---------|-----------------------|-----------|----------------------|-----------------|
+| 17766   | 89                    | 4         | 50                   | 356 + 50 = 406  |
+| 17655   | 82                    | 4         | 40                   | 328 + 40 = 368  |
+| 10376   | 12                    | 15        | 20                   | 180 + 20 = 200  |
+| 29057   | 22                    | 3         | 10                   | 66 + 10 = 76    |
+| 29253   | 11                    | 3         | 15                   | 33 + 15 = 48    |
+| 27650   | 19                    | 3         | 25                   | 57 + 25 = 82    |
+| 23980   | 10                    | 4         | 5                    | 40 + 5 = 45     |
+| 23950   | 32                    | 4         | 30                   | 128 + 30 = 158  |
+| 969     | 12                    | 4         | 10                   | 48 + 10 = 58    |
+| 4969    | 16                    | 4         | 20                   | 64 + 20 = 84    |
+| 13816   | 15                    | 4         | 10                   | 60 + 10 = 70    |
+| 17760   | 11                    | 4         | 15                   | 44 + 15 = 59    |
+| 29398   | 42                    | 4         | 50                   | 168 + 50 = 218  |
+| 107198  | 11                    | 4         | 5                    | 44 + 5 = 49     |
+| 24800   | 20                    | 4         | 30                   | 80 + 30 = 110   |
+| 13822   | 14                    | 4         | 20                   | 56 + 20 = 76    |
+| 25303   | 11                    | 15        | 25                   | 165 + 25 = 190  |
+| 99904   | 23                    | 15        | 50                   | 345 + 50 = 395  |
+| 5852    | 11                    | 10        | 15                   | 110 + 15 = 125  |
+| 20558   | 17                    | 3         | 10                   | 51 + 10 = 61    |
+| 9700    | 31                    | 10        | 40                   | 310 + 40 = 350  |
