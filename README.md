@@ -419,7 +419,7 @@ LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRT
 5 | 16| 0| 0 | 0 | 0
 6 | 16| 0 | 0 | 0 | 0
 7 | 16| 0 | 0 | 0 | 0
-8 | 16| 0 | 0 | 1 | 0
+8 | 16| 0 | 0 | 0 | 1
 9 | 16| 0 | 0 | 0 | 0
 10| 16| 0 | 0 | 0 | 0
 11| 16| 0 | 0 | 0 | 0
@@ -669,23 +669,23 @@ LOJA | QUANTIDADE
 13| 0
 
 ### ### Teste 12 - Item com quatro encomendas, com o multiplo de 1 item, entrando 3 unidades, para doze lojas com necessidade de 1 item em cada loja.
-
+Entrada
 produto_estoque
-LOJA | QUANTIDADE_MINIMA | QUANTIDADE_CRITICO | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
----: | ---: | ---: | ---: | ---: | ---:
-1 | 0 | 0 | 0 | 0 | 0
-2 | 1 | 0 | 0 | 1 | 0
-3 | 1 | 0 | 0 | 1 | 0
-4 | 1 | 0 | 0 | 0 | 0
-5 | 1 | 0 | 0 | 1 | 0
-6 | 1 | 0 | 0 | 0 | 0
-7 | 1 | 0 | 0 | 0 | 0
-8 | 1 | 0 | 0 | 0 | 0
-9 | 1 | 0 | 0 | 0 | 0
-10| 1 | 0 | 0 | 1 | 0
-11| 1 | 0 | 0 | 0 | 0
-12| 1 | 0| 0 | 0 | 0
-13| 1| 0 | 0 | 0 |0
+LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
+---: | ---: | ---: | ---: | ---: | ---:| ---:
+1 | 0 | 0 | 0 | 0 | 0 | 0
+2 | 1 | 0 | 0 | 0 | 1 | 0
+3 | 1 | 0 | 0 | 0 | 1 | 0
+4 | 1 | 0 | 0 | 0 | 0 | 0
+5 | 1 | 0 | 0 | 0 | 1 | 0
+6 | 1 | 0 | 0 | 0 | 0 | 0
+7 | 1 | 0 | 0 | 0 | 0 | 0
+8 | 1 | 0 | 0 | 0 | 0 | 0
+9 | 1 | 0 | 0 | 0 | 0 | 0
+10| 1 | 0 | 0 | 0 | 1 | 0
+11| 1 | 0 | 0 | 0 | 0 | 0
+12| 1 | 0| 0 | 0  | 0 | 0
+13| 1| 0 | 0 | 0  | 0 | 0
 
 
 Lojas
@@ -754,8 +754,8 @@ LOJA | Quantidade
 
 Entrada
 produto_estoque
-LOJA | QUANTIDADE_MINIMA | QUANTIDADE_CRITICO | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
----: | ---: | ---: | ---: | ---: | ---:
+LOJA | QUANTIDADE_MINIMA | QUANTIDADE_MAXIMA | QUANTIDADE_CRITICA | ESTOQUE_VIRTUAL | EMPENHADO_ENCOMENDA | GIRO
+---: | ---: | ---: | ---: | ---: | ---:| ---:
 1|	0|	0 | 0 | 0 | 0
 2|10| 0 | 0 | 0 | 0
 3|15| 0 | 0 | 0 | 0
